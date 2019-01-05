@@ -1,4 +1,4 @@
-#include <cstdio>
+#include <cstdio>           //example
 int main() {
 	int n, step = 0;
 	scanf("%d", &n);
