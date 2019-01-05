@@ -11,8 +11,8 @@ int main() {
     allss = (c2 - c1) / CLK_TCK;
   }
   hh = allss / 3600;
-  mm = (allss - hh * 3600) / 60;
-  ss = (allss - hh * 3600) % 60;
+  mm = allss % 3600 / 60;                 //better use % to solve problem
+  ss = allss % 3600 % 60;
   printf("%02d:%02d:%02d", hh, mm, ss);
   return 0;
 }
