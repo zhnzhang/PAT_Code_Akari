@@ -21,7 +21,7 @@ int main() {
     for(int j = 0; j < i; j++) {
       printf("%c", c);
     }
-    printf("\n");
+    printf("\n");           //不用打空格了，直接换行就能达到目的效果
   }
   //输出正三角
   for(int i = 3; i <= bottom; i += 2) {
