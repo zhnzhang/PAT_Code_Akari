@@ -1,5 +1,6 @@
 //example
 //采用除基取余法,循环部分采用do...while语句以处理初值为0时的特殊情况
+//如果进制转换的时候使用的是while语句而不是do...while语句，则要注意当A + B为0时要特判 输出0
 #include <cstdio>
 int main() {
   int a, b, d;
