@@ -23,6 +23,8 @@ int main() {
     printf("%s", change[ans[i]]);
     if(i != 0)
       printf(" ");
+    else
+      printf("\n");
   }
   return 0;
 }
