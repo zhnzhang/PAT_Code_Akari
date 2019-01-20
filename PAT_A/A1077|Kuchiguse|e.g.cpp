@@ -12,7 +12,7 @@ int main() {
   for(int i = 0; i < n; i++) {
     //gets(s[i]);       //这里得用gets，具体见上方注释,但PAT里C++编译器没法用gets
     fgets(s[i], 260, stdin);              //PTA网站如果使用C++(g++)编译不能使用gets(),如果使用c(gcc)编译不能使用C++头文件
-    if(s[i][strlen(s[i]) - 1] == '\n')    //此处需用fgets()替代gets()，并且把换行符去了，fgets()把换行符也接收了
+    if(s[i][strlen(s[i]) - 1] == '\n')    //此处需用fgets()替代gets()，并且把换行符去了，因为fgets()把换行符也接收了
       s[i][strlen(s[i]) - 1] = '\0';      //还能使用getline(cin,v[i]),#include <iostream> #include <string>
     int len = strlen(s[i]);
     if(len < minlen)
