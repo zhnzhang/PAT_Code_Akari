@@ -17,7 +17,7 @@ int main(){
 	getchar();				//接收数字后的换行符
 	for (int i = 0; i < n; i++){
 		fgets(v[i], maxn2, stdin);		//PTA网站如果使用C++(g++)编译不能使用gets(),如果使用c(gcc)编译不能使用C++头文件
-		if (v[i][strlen(v[i]) - 1] == '\n')	//此处需用fgets()替代gets()，并且把换行符去了，fgets()把换行符也接收了
+		if (v[i][strlen(v[i]) - 1] == '\n')	//此处需用fgets()替代gets()，并且把换行符去了，因为fgets()把换行符也接收了
 		    v[i][strlen(v[i]) - 1] = '\0';	//还能使用getline(cin,v[i]),#include <iostream> #include <string>
 		if (minlen > strlen(v[i]))
 			minlen = strlen(v[i]);
