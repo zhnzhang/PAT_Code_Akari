@@ -41,7 +41,7 @@ int main() {
     else
       stu[i].flag = 4;                  //第4类情况最多，因此放在最后
   }
-  sort(stu, stu + n, cmp);
+  sort(stu, stu + n, cmp);        //排序
   printf("%d\n", m);
   for(int i = 0; i < m; i++) {
     printf("%s %d %d\n", stu[i].id, stu[i].de, stu[i].cai);
