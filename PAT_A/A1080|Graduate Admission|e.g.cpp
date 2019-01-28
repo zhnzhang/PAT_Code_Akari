@@ -26,7 +26,7 @@ bool cmpStu(Student a, Student b) {
   }
 }
 
-bool cmpID(int a, int b) {    //?
+bool cmpID(int a, int b) {    //?为什么这么写?
   return stu[a].stuID < stu[b].stuID;   //按考生编号从小到大排序，联动后面使用规则的语句进行理解，其实就是抓准所排的是什么，按照什么规则进行排序,形参就是所排的东西
 }
 
@@ -75,7 +75,7 @@ int main() {
       //按ID从小到大排序
       sort(sch[i].id, sch[i].id + sch[i].stuNum, cmpID);
       for(int j = 0; j < sch[i].stuNum; j++) {
-        printf("%d", stu[sch[i].id[j]].stuID);      //?
+        printf("%d", stu[sch[i].id[j]].stuID);      //?stu[sch[i].id[j]].stuID与sch[i].id[j]不是一回事
         if(j < sch[i].stuNum - 1) {
           printf(" ");
         }
