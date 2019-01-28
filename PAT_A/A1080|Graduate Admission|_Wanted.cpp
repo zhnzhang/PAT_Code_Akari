@@ -75,7 +75,7 @@ int main() {
       //按ID从小到大排序
       sort(sch[i].id, sch[i].id + sch[i].stuNum, cmpID);
       for(int j = 0; j < sch[i].stuNum; j++) {
-        printf("%d", stu[sch[i].id[j]].stuID);      //?stu[sch[i].id[j]].stuID与sch[i].id[j]不是一回事?是因为第二个sort吗
+        printf("%d", stu[sch[i].id[j]].stuID);      //?stu[sch[i].id[j]].stuID与sch[i].id[j]不是一回事?是因为两个sort吗
         if(j < sch[i].stuNum - 1) {
           printf(" ");
         }
