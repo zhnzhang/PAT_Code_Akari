@@ -22,7 +22,7 @@ void generateP(int index) {
 }
 
 int main() {
-	scanf("%d", &n);		//欲输出1~n的全排列
-	generateP(1);
+	scanf("%d", &n);
+	generateP(1);			//欲输出1~n的全排列
 	return 0;
 }
