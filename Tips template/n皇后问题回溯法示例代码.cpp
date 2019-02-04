@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cmath>
 using namespace std;
-const int maxn = 11;
+const int maxn = 11;		//修改maxn数值可增加 可计算全排列的位数，目前仅以11为例
 //count,表示合法的方案数，P为当前排列，hashTable记录整数x是否已经在P中
 int n, count = 0, P[maxn], hashTable[maxn] = {0};
 //当前处理排序的第index号位
