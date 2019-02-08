@@ -21,3 +21,5 @@ int solve(int left, int right) {
 	}
 	return left;				//返回夹出来的位置
 }
+
+//如何判断这类函数的查询是否成功，就是要注意对上界n的处理即可
