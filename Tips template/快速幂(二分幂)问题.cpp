@@ -56,3 +56,5 @@ LL binaryPow(LL a, LL b, LL m) {
 	}
 	return ans;
 }
+
+//在实际应用中，递归写法和迭代写法在效率上的差别不那么明显，因此随自己喜欢使用
