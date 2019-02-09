@@ -1,3 +1,5 @@
+//虽然我这函数命名为lower_bound,但似乎有预置的相同功能的函数也叫这名字可以一用
+
 //A[]为递增序列，x为欲查询的数，函数返回第一个大于等于x的元素的位置
 //二分上下界为左闭右闭的[left, right]，传入的初值为[0, n]
 int lower_bound(int A[], int left, int right, int x) {
