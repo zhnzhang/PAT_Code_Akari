@@ -31,3 +31,55 @@ int main() {
 	printf("No Solution\n");
 	return 0;
 }
+
+
+//example
+//对应A1048.Find Coins
+//给出二分查找的做法
+//使用二分查找法找到m - a[i]时，必须判断其是否就是a[i]，即下标是否相同。
+//如果下标相同，则说明找到的其实是同一个位置的数字，应该跳过这种情况(区别于普通做法，这是直接跳过去了？)
+
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+int a[100010];
+
+//left和right初始分别为0和n - 1，key即m - a[i]
+//二分查找函数如下
+int Bin(int left, int right, int key) {
+	int mid;
+	while(left <= right) {
+		mid = left + (right - left) / 2;	//取left和right的中点
+		if(a[mid] == key) {
+			return mid;		//如果找到了key,则返回下标mid
+		}
+		else if(a[mid] > key) {
+			right = mid - 1;
+		}
+		else {
+			left = mid + 1;
+		}
+	}
+	return -1;		//如果没有找到key，则返回-1
+}
+
+int main() {
+	int i, n, m;
+	scanf("%d%d", &n, &m);
+	for(i = 0; i < n; i++) {
+		scanf("%d", &a[i]);
+	}
+	sort(a, a + n);		//从小到大排序
+	for(i = 0; i < n; i++) {
+		int pos = Bin(0, n - 1, m - a[i]);		//寻找m - a[i]
+		if(pos != -1 && i != pos) {		//找到
+			printf("%d %d\n", a[i], a[pos]);
+			break;
+		}
+	}
+	if(i == n) {
+		printf("No Solution\n");		//找不到
+	}
+	return 0;
+}
