@@ -66,3 +66,35 @@ int main() {
 	printf("%d\n", ans);	//输出结果
 	return 0;
 }
+
+//example
+//B1030/A1085.完美数列
+//下面使用two pointers的解决方案，时间复杂度O(n)
+//容易获得下面这个性质: 如果a[j] <= a[i] * p成立，那么对[i, j]内的任意位置k，一定有a[k] <= a[i] * p也成立
+//计数器count存放满足a[j] <= a[i] * p的最大长度，j不断增加的过程中更新count(注意看下更新语句，不是单纯的加1)
+//该方案将在a[j] <= a[i] * p的条件下始终控制i和j的距离最大
+//建议直接把序列中的元素都定义为long long型
+
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+const int maxn = 100010;
+int main() {
+	int n, p, a[maxn];
+	scanf("%d%d", &n, &p);
+	for(int i = 0; i < n; i++) {
+		scanf("%d", &a[i]);
+	}
+	sort(a, a + n);		//从小到大排序
+	int i = 0, j = 0, count = 1;	//注意count初值设为1
+	while(i < n && j < n) {
+		//j不断右移，直到恰好不满足条件
+		while(j < n && a[j] <= (long long)a[i] * p) {
+			count = max(count, j - i + 1);			//更新计数器count
+			j++;
+		}
+		i++;		//i右移一位
+	}
+	printf("%d\n", count);			//输出结果
+	return 0;
+}
