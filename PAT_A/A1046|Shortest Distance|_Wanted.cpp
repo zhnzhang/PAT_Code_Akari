@@ -29,7 +29,7 @@ int main() {
 			swap(left, right);			//left > right时交换
 		}
 		int temp = dis[right - 1] - dis[left - 1];
-		printf("%d\n", min(temp, sum - temp);		//对每个询问看最短距离的核心语句在此
+		printf("%d\n", min(temp, sum - temp));		//对每个询问看最短距离的核心语句在此
 	}
 	return 0;
 }
