@@ -83,3 +83,47 @@ int main() {
 	}
 	return 0;
 }
+
+
+
+//example
+//A1048.Find Coins
+//下面提供two pointers的做法
+//操作直到i >= j或满足条件a时结束，结束时根据i >= j是否成立来确定解是否存在
+//如果有多组答案，一定要输出的是v1最小的那一对(这里由循环顺序决定了)
+
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+const int maxn = 100010;
+int a[maxn];
+void twoPointers(int n, int m) {		//n为元素个数，m为所求的和
+	int i = 0, j = n - 1;		//双下标
+	while(i < j) {
+		if(a[i] + a[j] == m) break;		//找到a[i]和a[j]的和为m，退出循环
+		else if(a[i] + a[j] < m) {
+			i++;
+		}
+		else {
+			j--;
+		}
+	}
+	if(i < j) {		//有解
+		printf("%d %d\n", a[i], a[j]);
+	}
+	else {		//无解
+		printf("No Solution\n");
+	}
+}
+
+int main() {
+	int n, m;
+	scanf("%d%d", &n, &m);
+	for(int i = 0; i < n; i++) {
+		scanf("%d", &a[i]);
+	}
+	sort(a, a + n);		//排序
+	twoPointers(n, m);	//two Pointers
+	return 0;
+}
