@@ -72,7 +72,7 @@ int main() {
 //选取随机主元，对区间[left, right]进行划分
 int randPartition(int A[], int left, int right) {
 	//生成[left, right]内的随机数p
-	int p = (round(1.0 * rand() / RAND_MAX * (right - left) + left);
+	int p = (round(1.0 * rand() / RAND_MAX * (right - left) + left));
 	swap(A[p], A[left]);		//交换A[p]和A[left]
 	//以下为原先Partition函数的划分过程，不需要改变任何东西
 	int temp = A[left];			//A[left]存放至临时变量temp
