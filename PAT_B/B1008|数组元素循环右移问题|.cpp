@@ -49,3 +49,50 @@ int main() {              //它并没有实际改变数组中的顺序，而是�
   return 0;
 }
 */
+
+
+//example
+//B1008.数组元素循环右移问题
+//此处的解法利用最大公约数，让移动的次数最少
+//为了避免已经得到结果后的继续枚举，设d为N和M的最大公约数，那么从N - M号位开始枚举起始位(这里的位号都是指从0开始)
+//直到N - M + d - 1位结束
+//例如N = 8、M = 3时，就只需要从N - M = 5号位开始、直到N - M + d - 1 = 5号位结束，也就是只需要枚举5号位作为起始位即可
+
+#include <cstdio>
+
+int gcd(int a, int b) {		//求a和b的最大公约数
+	if(b == 0)	return a;
+	else return gcd(b, a % b);
+}
+
+int main() {
+	int a[110];
+	int n, m, temp, pos, next;
+	//temp为临时变量，pos存放当前处理的位置，next为下一个要处理的位置
+	scanf("%d%d", &n, &m);
+	for(int i = 0; i < n; i++) {
+		scanf("%d", &a[i]);
+	}
+	m = m % n;		//修正m
+	if(m != 0) {		//如果m == 0，直接输出数组即可，不需要执行这部分
+		int d = gcd(m, n);		//d为m和n的最大公约数
+		for(int i = n - m; i < n - m + d; i++) {	//枚举一个最大公约数的范围
+			temp = a[i];		//把当前位置元素先拿走
+			pos = i;		//记录当前要处理的位置
+			do {
+				//计算下一个要处理的位置
+				next = (pos - m + n) % n;		//考虑到循环所以这样写
+				//如果下一个位置不是初始点
+				//则把下一个位置的元素赋值给当前处理位置
+				if(next != i) a[pos] = a[next];
+				else a[pos] = temp;	//把一开始拿走的元素赋值给最后这个空位
+				pos = next;		//传递位置
+			} while(pos != i);		//循环直至当前处理位置回到初始位置结束
+		}
+	}
+	for(int i = 0; i < n; i++) {	//输出数组
+		printf("%d", a[i]);
+		if(i < n - 1) printf(" ");
+	}
+	return 0;
+}
