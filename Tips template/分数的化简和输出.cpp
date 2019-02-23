@@ -3,6 +3,11 @@ struct Fraction {		//分数
 	long long up, down;		//分子、分母
 }
 
+//现对分数的表示制订三项规则：
+//1.使down为非负数。如果分数为负，那么令分子up为负即可
+//2.如果该分数恰为0，那么规定其分子为0，分母为1
+//3.分子和分母没有除了1以外的公约数
+
 //分数的化简主要用来使Fraction变量满足分数表示的三项规定
 Fraction reduction(Fraction result) {
 	if(result.down < 0) {		//分母为负数，令分子和分母都变为相反数
