@@ -25,6 +25,14 @@ Fraction reduction(Fraction result) {
 	return result;
 }
 
+//分数做四则运算后，返回结果前要进行化简，举例如下：
+Fraction divide(Fraction f1, Fraction f2) {	//分数f1除以分数f2
+	Fraction result;
+	result.up = f1.up * f2.down;		//分数商的分子
+	result.down = f1.down * f2.up;		//分数商的分母
+	return reduction(result);		//返回结果分数，注意化简
+}
+
 //分数除法，除数不为0，故注意特判
 
 //分数的输出根据题目的要求进行，大体注意以下几点
