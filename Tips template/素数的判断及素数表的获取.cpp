@@ -85,7 +85,7 @@ void Find_Prime() {
     for(int i = 2; i < maxn; i++) {     //从2开始，i < maxn结束，注意不能写成i <= maxn
         if(p[i] == false) {     //如果i是素数
             prime[pNum++] = i;      //把素数i存档prime数组中
-            for(int j = i + 1; j < maxn; j += i) {
+            for(int j = i + i; j < maxn; j += i) {
                 //筛去所有i的倍数，循环条件不能写成j <= maxn
                 p[j] = true
             }
@@ -102,7 +102,7 @@ void Find_Prime() {
     for(int i = 2; i < maxn; i++) {     //从2开始，i < maxn结束，注意不能写成i <= maxn
         if(p[i] == false) {     //如果i是素数
             prime[pNum++] = i;      //把素数i存档prime数组中
-            for(int j = i + 1; j < maxn; j += i) {
+            for(int j = i + i; j < maxn; j += i) {
                 //筛去所有i的倍数，循环条件不能写成j <= maxn
                 p[j] = true
             }
