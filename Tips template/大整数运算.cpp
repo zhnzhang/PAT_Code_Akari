@@ -162,7 +162,7 @@ bign divide(bign a, int b, int &r) {
         }
     }
     while(c.len - 1 >= 1 && c.d[c.len - 1] == 0) {
-        c.len--;        //去除高位的0，同时至少保留一位最低位
+        c.len--;        //去除商高位的0，同时至少保留一位最低位
     }
     return c;
 }
