@@ -10,3 +10,5 @@ for(set<int>::iterator it = st.begin(); it != st.end(); it++) {     //遍历set
     printf("%d", *it);  //从小到大输出朋友证号
 }
 
+
+//通过map直接建立int至int的映射，相比开int数组的优势在于：以免数据范围过大，可能导致的内存超限。
