@@ -3,6 +3,9 @@
 //set的迭代器不支持it < st.end()写法，因此循环条件只能用it != st.end()
 
 
+//在STL标准容器中，只有vector、string、deque是可以使用sort的。这是因为像set、map这种容器都是用红黑树实现的，元素本身有序，故不允许使用sort排序
+
+
 for(set<int>::iterator it = st.begin(); it != st.end(); it++) {     //遍历set
     if(it != st.begin()) {  //要掌握这种针对STL容器输出的空格格式控制方法
         printf(" ");        //不在第一个数前输出空格
