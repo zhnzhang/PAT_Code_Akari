@@ -35,3 +35,6 @@ map<string, int> mp;
 //如下也给出了如何临时构建pair的两种方法
 mp.insert(make_pair("heihei", 5));
 mp.insert(pair<string, int>("haha", 10));
+
+
+//比较函数cmp是来告诉sort函数何时进行元素交换的
