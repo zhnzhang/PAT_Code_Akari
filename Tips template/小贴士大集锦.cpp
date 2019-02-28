@@ -26,3 +26,12 @@ for(set<int>::iterator it = st.begin(); it != st.end(); it++) {     //遍历set
 
 //STL中，以vector为例，需要注意，如果typename也是一个STL容器，定义的时候要记得在>>符号之间加上空格，因为一些使用C++11之前标准的编译器会把它视为移位操作，导致编译错误
 //示例：vector<vector<int> > name;     // >>之间要加空格。这句本身其实是定义了一个二维vector数组
+
+
+//由于map的内部实现中涉及pair，因此添加map头文件时会自动添加utility头文件，此时如果需要使用pair，就不需要额外再去添加utility头文件了
+//pair可以用来代替二元结构体及其构造函数，可以节省编码时间
+//pair还能作为map的键值对来进行插入，举例如下：
+map<string, int> mp;
+//如下也给出了如何临时构建pair的两种方法
+mp.insert(make_pair("heihei", 5));
+mp.insert(pair<string, int>("haha", 10));
