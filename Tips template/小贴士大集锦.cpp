@@ -22,3 +22,7 @@ for(set<int>::iterator it = st.begin(); it != st.end(); it++) {     //遍历set
 
 
 //STL中，对queue，使用front()和pop()函数前，必须用empty()判断队列是否为空，否则可能因为队空而出现错误
+
+
+//STL中，以vector为例，需要注意，如果typename也是一个STL容器，定义的时候要记得在>>符号之间加上空格，因为一些使用C++11之前标准的编译器会把它视为移位操作，导致编译错误
+//示例：vector<vector<int> > name;     // >>之间要加空格。这句本身其实是定义了一个二维vector数组
