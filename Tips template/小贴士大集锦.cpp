@@ -41,3 +41,5 @@ mp.insert(pair<string, int>("haha", 10));
 
 
 //比较函数cmp是来告诉sort函数何时进行元素交换的
+
+//反转二叉树的操作只需要进行后序遍历，在后序遍历访问根结点时交换lchild和rchild即可
