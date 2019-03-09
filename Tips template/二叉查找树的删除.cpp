@@ -15,6 +15,7 @@ node* findMin(node* root) {
 }
 
 //删除以root为根结点的树中权值为x的结点（递归删除）
+//还可以接着优化，优化方法见书P314
 void deleteNode(node* &root, int x) {
     if(root == NULL) return;    //不存在权值为x的结点
     if(root->data == x) {       //找到欲删除结点
