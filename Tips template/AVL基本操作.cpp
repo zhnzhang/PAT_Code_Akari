@@ -118,7 +118,7 @@ void insert(node* &root, int v) {
 
 //AVL树的建立
 node* Create(int data[], int n) {
-    node* root = NULL;      //新建空的根几点root
+    node* root = NULL;      //新建空的根结点root
     for(int i = 0; i < n; i++) {
         insert(root, data[i]);      //将data[0]~data[n - 1]插入AVL树中
     }
