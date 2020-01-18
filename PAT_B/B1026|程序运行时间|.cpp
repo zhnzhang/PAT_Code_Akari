@@ -1,4 +1,26 @@
 #include <cstdio>
+#include <cmath>
+
+int main() {
+    int hh, mm, ss;
+    double c1, c2, ans;
+    scanf("%lf%lf", &c1, &c2);
+    ans = (c2 - c1) / 100;
+    ans = round(ans);
+    hh = (int)ans / 3600;
+    ans = (int)ans - hh * 3600;
+    mm = (int)ans / 60;
+    ss = (int)ans - mm * 60;
+    printf("%02d:%02d:%02d\n", hh, mm, ss);
+    return 0;
+}
+
+
+
+
+
+
+#include <cstdio>
 const int CLK_TCK = 100;
 
 int main() {
