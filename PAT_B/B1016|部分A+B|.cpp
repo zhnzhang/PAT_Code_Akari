@@ -1,4 +1,37 @@
 #include <cstdio>
+#define ll long long
+
+int main() {
+    int i = 0, j = 0, da, db;
+    ll a, b, pa = 0, pb = 0;
+    scanf("%lld%d%lld%d", &a, &da, &b, &db);
+    while (a != 0) {
+        if (a % 10 == da)
+            i++;
+        a /= 10;
+    }
+    while (b != 0) {
+        if (b % 10 == db)
+            j++;
+        b /= 10;
+    }
+    while (i--) {
+        pa *= 10;
+        pa += da;
+    }
+    while (j--) {
+        pb *= 10;
+        pb += db;
+    }
+    printf("%lld", pa + pb);
+    return 0;
+}
+
+
+
+
+
+#include <cstdio>
 
 int main() {
   long long A, B, Apart = 0, Bpart = 0;
