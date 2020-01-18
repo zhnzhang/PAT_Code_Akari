@@ -1,4 +1,26 @@
 #include <cstdio>
+int sum[100002] = {0};
+
+int main() {
+    int N, school, score, maxschool, maxscore = -1;
+    scanf("%d", &N);
+    for (int i = 0; i < N; i++) {
+        scanf("%d %d", &school, &score);
+        sum[school] += score;
+    }
+    for (int i = 1; i <= N; i++) {
+        if (sum[i] > maxscore) {
+            maxschool = i;
+            maxscore = sum[i];
+        }
+    }
+    printf("%d %d\n", maxschool, maxscore);
+    return 0;
+}
+
+
+
+#include <cstdio>
 const int max_n = 100010;
 int school[max_n] = {0};    //这个数量级的数组要定义在主函数外面
 
