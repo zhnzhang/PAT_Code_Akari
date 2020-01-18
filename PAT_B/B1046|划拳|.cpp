@@ -1,3 +1,29 @@
+#include <cstdio>
+
+int main() {
+    int n;
+    int am, ah, bm, bh;
+    int anum = 0, bnum = 0;   //别犯不赋初值就作运算的低级错误了
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d%d%d%d", &am, &ah, &bm, &bh);
+        if (ah == (am + bm) && bh != (am + bm))
+            bnum++;
+        else if (ah != (am + bm) && bh == (am + bm))
+            anum++;
+    }
+    printf("%d %d\n", anum, bnum);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
 #include <cstdio>         //答案给的逻辑比我的要简单，我属于先考虑同赢同输，饶了个弯子，其实
                           //这道题可以直接切入两种情况就行，甲对乙不对乙喝，甲不对乙对甲喝，即可。
 int main() {
