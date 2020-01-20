@@ -1,3 +1,37 @@
+//这道题的题设没有限制直接输出，但我这个做法是正统的三次反转使数组循环右移的方法
+#include <cstdio>
+
+void Reverse(int a[], int l, int num) {
+    int temp;
+    for (int i = 0; i < num / 2; i++) {
+        temp = a[l + i];
+        a[l + i] = a[l + num - 1 - i];
+        a[l + num - 1 - i] = temp;
+    }
+}
+
+int main() {
+    int a[110] = {0};
+    int n, m;
+    scanf("%d%d", &n, &m);
+    m = m % n;                                  //易错点，Point1，2的检查点，因为m的大小没说明，所以不要思维定势
+    for (int i = 0; i < n; i++) {
+        scanf("%d", a + i);
+    }
+    Reverse(a, 0, n - m);
+    Reverse(a, n - m, m);
+    Reverse(a, 0, n);
+    for (int i = 0; i < n; i++) {
+        if (i != n - 1) {
+            printf("%d ", a[i]);
+        } else {
+            printf("%d", a[i]);
+        }
+    }
+    return 0;
+}
+
+
 #include <cstdio>         //本题的解题思路如下面注释，我是借鉴了CSDN，我本身没想到用一步一步的循环做
 int main() {              //temp的设置很好，但我那些一步到位的想法免不了数组的支持->更新:习题集P201就可以将我的思路不用数组就实现。类比希尔排序，运用到一个临时放数据的变量
   int n, m, a[150];       //还是编程的思路不到位，分治的思想缺乏，利用循环这个基本操作分而治之
