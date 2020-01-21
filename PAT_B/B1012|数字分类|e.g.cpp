@@ -1,3 +1,72 @@
+//Point8总过不去的原因
+//​​​​​这个题目如果总是有个测试点过不去就是因为A2类的交错求和的结果本身就是0，而你把0作为判断这一类数字不存在的条件是错误的。
+
+#include <cstdio>
+
+int main() {
+    int n, j = 0, k = 0;                       //j用于交错求和，k用于平均值计算
+    int a[1010] = {0};
+    double count[10] = {0};
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+        switch (a[i] % 5) {
+            case 0:
+                if (a[i] % 2 == 0) {
+                    count[1] += a[i];
+                }
+                break;
+            case 1:
+                j++;
+                if (j % 2 == 1) {
+                    count[2] += a[i];
+                } else if (j % 2 == 0) {
+                    count[2] -= a[i];
+                }
+                break;
+            case 2:
+                count[3]++;
+                break;
+            case 3:
+                count[4] += a[i];
+                k++;
+                break;
+            case 4:
+                if (a[i] > count[5]) {
+                    count[5] = a[i];
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    for (int i = 1; i <= 5; i++) {      //这里要注意A2交错求和的结果可能本身就是0，这样的话不能将0作为判断这类数字不存在的原因
+        if (!count[i]) {                //不能光判a2，那样会误判，要加入对j的判别
+            if (i == 2 && j != 0) {
+                printf("%.0f", count[i]);
+            } else {
+                printf("N");
+            }
+            if (i != 5) {
+                printf(" ");
+            }
+        } else {
+            if (i != 4) {
+                printf("%.0f", count[i]);
+            } else {
+                printf("%.1f", count[i] / k);
+            }
+            if (i != 5) {
+                printf(" ");
+            }
+        }
+    }
+    return 0;
+}
+
+
+
+
 #include <cstdio>                 //example
 int main() {
   int count[5] = {0};
