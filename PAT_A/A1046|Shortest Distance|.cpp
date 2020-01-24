@@ -1,3 +1,37 @@
+#include <cstdio>
+int dis[100010] = {0};                  //dis数组存储的是按圆圈顺时针 结点1 - 结点i 的距离 i >= 1
+
+int main() {
+    int n, m, temp, sum = 0;            //sum是记录整个一圈的长度
+    int p1, p2;
+    scanf("%d", &n);
+    for (int i = 2; i <= n + 1; i++) {  //这里的循环逻辑用于完成dis数组的定义的实现
+        scanf("%d", &temp);
+        dis[i] = dis[i - 1] + temp;
+        sum += temp;
+    }
+    scanf("%d", &m);
+    for (int i = 0; i < m; i++) {
+        scanf("%d %d", &p1, &p2);       //收到的p1 p2大小顺序要处理一下使p1 < p2
+        if (p1 > p2) {
+            temp = p1;
+            p1 = p2;
+            p2 = temp;
+        }
+        if (dis[p2] - dis[p1] > sum - (dis[p2] - dis[p1])) {        //类似取补集的操作，两相比较
+            printf("%d\n", sum - (dis[p2] - dis[p1]));
+        } else {
+            printf("%d\n", dis[p2] - dis[p1]);
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+
 //A1046.Shortest Distance
 //example
 //以dis[i]表示1号结点按顺时针方向到达"i号结点顺时针方向的下一个结点"的距离(1 <= i <= N)
