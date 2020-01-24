@@ -1,3 +1,35 @@
+//注意“零多项式”的指数和系数都是 0，但是表示为 0 0（这个是为只有常数项的情况准备的吧）
+//注意这类以scanf返回值为判别条件的输入方法
+
+//虽然题意是最高1000次幂，没有负幂次，可以先放数组再遍历
+//但我选择一次就接到数并进行处理，利用返回值是否是EOF进行判别
+#include <cstdio>
+
+int main() {
+    int c, e;               //c是系数，e是指数
+    int count = 0;          //输入计数
+    while (scanf("%d%d", &c, &e) != EOF) {          //这样写可以避免运行超时
+        if (e != 0 && count != 0)                   //用于控制空格
+            printf(" ");
+        count += 2;
+        if (e != 0) {
+            printf("%d %d", c * e, e - 1);
+        } else {                                    //此时e == 0
+            if (count == 2) {                       //这就是常数项的情况
+                printf("0 0");
+                break;
+            } else {
+                break;
+            }
+        }
+    }
+    return 0;
+}
+
+
+
+
+
 //Example 参考答案如下
 #include <cstdio>
 
