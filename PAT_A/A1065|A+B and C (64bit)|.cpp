@@ -12,12 +12,12 @@ int main() {
     ll a, b, c, res;
     scanf("%d", &t);
     bool flag;
-    for (int i = 1; i <= t; i++) {
+    for (int i = 1; i <= t; i++) {                      //这里对溢出的判别条件的分析见算法笔记
         scanf("%lld%lld%lld", &a, &b, &c);
         res = a + b;                                    //要把a+b放到res里面再进行比较，否则会出错
         if (a > 0 && b > 0 && res < 0) {                //正溢出判别
             flag = true;
-        } else if (a < 0 && b < 0 && res >= 0) {         //负溢出判别（注意是>=），不然最后一组数据会错
+        } else if (a < 0 && b < 0 && res >= 0) {        //负溢出判别（注意是>=），不然最后一组数据会错
             flag = false;
         } else if (res > c) {
             flag = true;
