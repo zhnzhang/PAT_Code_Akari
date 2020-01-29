@@ -1,3 +1,32 @@
+#include <cstdio>
+
+int main() {
+    int n, a[210] = {0};
+    int find;                           //要找的
+    bool flag;                          //用于判断是否找到
+    while (scanf("%d", &n) != EOF) {    //这样写用于多点测试，一次运行测多组实验数据
+        flag = false;
+        for (int i = 0; i < n; i++) {
+            scanf("%d", a + i);
+        }
+        scanf("%d", &find);
+        for (int i = 0; i < n; i++) {
+            if (a[i] == find) {
+                printf("%d\n", i);
+                flag = true;
+                break;
+            }
+        }
+        if (flag == false) {
+            printf("-1\n");
+        }
+    }
+    return 0;
+}
+
+
+
+
 //Example
 #include <cstdio>
 const int maxn = 210;
