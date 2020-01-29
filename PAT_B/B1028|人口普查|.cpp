@@ -1,3 +1,60 @@
+#include <cstdio>
+
+typedef struct student {
+    char name[6];
+    int year;
+    int month;
+    int day;
+}student;
+
+student stu[100010];
+
+bool ValidCheck(int year, int month, int day) {                 //日期合法性检验
+    int tmp = year * 10000 + month * 100 + day;                 //位数看好
+    if (tmp <= 20140906 && tmp >= 18140906) {                   //这里等号要的,才符合题意
+        return true;
+    } else {
+        return false;
+    }
+}
+
+int ChangeStyle(int year, int month, int day) {                 //方便比较日期大小
+    return year * 1000 + month * 100 + day;
+}
+
+int main() {
+    int n, count = 0;                   //count计数合法的日期数
+    int max = 100, min = 30000000;      //用于存储最年轻和最老的日期的方便比较的形式
+    int max_id = 0, min_id = 0;         //max对应最年轻，min对应最老
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%s %d/%d/%d", stu[i].name, &stu[i].year, &stu[i].month, &stu[i].day);
+        if (ValidCheck(stu[i].year, stu[i].month, stu[i].day)) {
+            count++;
+        } else {
+            continue;
+        }
+        int tmp = ChangeStyle(stu[i].year, stu[i].month, stu[i].day);
+        if (tmp > max) {
+            max = tmp;
+            max_id = i;
+        }
+        if (tmp < min) {
+            min = tmp;
+            min_id = i;
+        }
+    }
+    if (count == 0) {
+        printf("0\n");                              //测试点3的考察点，没考虑这个特殊情况的输出就会错误
+    } else {
+        printf("%d %s %s\n", count, stu[min_id].name, stu[max_id].name);        //注意min对应最老，max对应最年轻
+    }
+    return 0;
+}
+
+
+
+
 //Example
 //最年长==时间最小，最年轻==时间最大
 //最后最好不要有空余空格，虽然本题没有明确要求
