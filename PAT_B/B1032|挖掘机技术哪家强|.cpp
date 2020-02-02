@@ -1,4 +1,25 @@
 #include <cstdio>
+
+int mp[100010] = {0};                       //下标学校标号（从1开始），内容是总分
+
+int main() {
+    int n, id, score;
+    int max_id = 1, max_score = -1;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d %d", &id, &score);
+        mp[id] += score;
+        if (mp[id] > max_score) {
+            max_score = mp[id];
+            max_id = id;
+        }
+    }
+    printf("%d %d\n", max_id, max_score);
+    return 0;
+}
+
+
+#include <cstdio>
 int sum[100002] = {0};
 
 int main() {
