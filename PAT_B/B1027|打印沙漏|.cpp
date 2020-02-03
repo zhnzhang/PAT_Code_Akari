@@ -1,3 +1,49 @@
+//0与3测试点返回格式错误是因为我对题意的理解存在问题
+//即格式错误是因为应该打印为：--* 的格式
+//而不是:--*--
+//-- 代指空格
+
+#include <cstdio>
+#include <cmath>
+
+int main() {
+    double n;
+    char c;
+    int h, count = 0;                                      //h为单个三角的层数,count为空格计数
+    scanf("%lf %c", &n, &c);
+    h = (int)sqrt((n + 1) / 2);
+    for (int i = h; i > 1; i--) {           //不算塔尖的倒三角
+        for (int j = 0; j < count; j++) {
+            printf(" ");
+        }
+        for (int j = 0; j < 2 * i - 1; j++) {
+            printf("%c", c);
+        }
+        printf("\n");
+        count++;
+    }
+    for (int i = 0; i < count; i++) {       //单独打印塔尖
+        printf(" ");
+    }
+    printf("%c", c);
+    printf("\n");
+    count--;
+    for (int i = 2; i <= h; i++) {          //不算塔尖的正三角
+        for (int j = 0; j < count; j++) {
+            printf(" ");
+        }
+        for (int j = 0; j < 2 * i - 1; j++) {
+            printf("%c", c);
+        }
+        printf("\n");
+        count--;
+    }
+    printf("%.0f\n", (n + 1) - 2 * h * h);
+    return 0;
+}
+
+
+
 //example
 //这是道数学题啊
 //着重需要获取这三个数据：1.三角形的底边拥有的字符数 2.每行非空格字符输出之前需要输出的空格数 3.需要剩下多少个题目给定的字符不输出
