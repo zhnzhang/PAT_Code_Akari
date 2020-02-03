@@ -1,3 +1,68 @@
+//根据范例，按要求找规律
+//我将这些分为三类讨论，按字符串中字符数来禁行分类
+//举几个特例就能看出规律了
+//比如12个-464，13个-555，14个-565  （n1n2n3）
+
+#include <cstdio>
+
+int main () {
+    char str[100];
+    int i, left, right, count = 0;      //i就是个数组下标指针，left和right是作为最后一行字符在数组中划左右边界出现的
+    scanf("%s", str);
+    while (str[count] != '\0') {
+        count++;                        //count就是字符串字数
+    }
+    if (count % 3 == 0) {
+        for (i = 0; i < count / 3 - 1; i++) {
+            printf("%c", str[i]);
+            for (int j = 0; j < count / 3; j++) {
+                printf(" ");
+            }
+            printf("%c", str[count - 1 - i]);
+            printf("\n");
+        }
+        left = i;
+        right = count - 1 - i;
+        for (int j = left; j <= right; j++) {
+            printf("%c", str[j]);
+        }
+        printf("\n");
+    } else if (count % 3 == 1) {
+        for (i = 0; i < count / 3; i++) {
+            printf("%c", str[i]);
+            for (int j = 0; j < count / 3 - 1; j++) {
+                printf(" ");
+            }
+            printf("%c", str[count - 1 - i]);
+            printf("\n");
+        }
+        left = i;
+        right = count - 1 - i;
+        for (int j = left; j <= right; j++) {
+            printf("%c", str[j]);
+        }
+        printf("\n");
+    } else {
+        for (i = 0; i < count / 3; i++) {
+            printf("%c", str[i]);
+            for (int j = 0; j < count / 3; j++) {
+                printf(" ");
+            }
+            printf("%c", str[count - 1 - i]);
+            printf("\n");
+        }
+        left = i;
+        right = count - 1 - i;
+        for (int j = left; j <= right; j++) {
+            printf("%c", str[j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+
+
 //example
 //Read the gets manual. It tells you which header file needs to be included. 
 //But take careful note of what it says near the end: "Never use gets(). 
