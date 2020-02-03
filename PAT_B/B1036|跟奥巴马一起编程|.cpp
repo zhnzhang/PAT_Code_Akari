@@ -1,3 +1,42 @@
+#include <cstdio>
+
+int main() {
+    int n;
+    char c;
+    scanf("%d %c", &n, &c);
+    for (int i = 0; i < n; i++) {
+        printf("%c", c);
+    }
+    printf("\n");
+    if (n % 2 == 1) {                                   //从奇偶的角度解决四舍五入的要求
+        for (int i = 0; i < n / 2 + 1 - 2; i++) {
+            printf("%c", c);
+            for (int j = 0; j < n - 2; j++) {
+                printf(" ");
+            }
+            printf("%c", c);
+            printf("\n");
+        }
+    } else {
+        for (int i = 0; i < n / 2 - 2; i++) {
+            printf("%c", c);
+            for (int j = 0; j < n - 2; j++) {
+                printf(" ");
+            }
+            printf("%c", c);
+            printf("\n");
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        printf("%c", c);
+    }
+    printf("\n");
+    return 0;
+}
+
+
+
+
 //example
 //输出由三部分组成，第1行，第2～row-1行，第row行
 //重点说下2～row-1行，先输出一个a再输出col-2个空格，再输出一个a
