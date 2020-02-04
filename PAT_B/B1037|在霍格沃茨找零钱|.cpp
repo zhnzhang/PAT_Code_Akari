@@ -22,7 +22,7 @@ int main() {
     subabs = abs(sub);
     k = subabs % 29;
     g = subabs / (29 * 17);
-    s = (subabs - g * 29 * 17) / 29;
+    s = (subabs - g * 29 * 17) / 29;        //s = subabs % (17 * 29) / 29
     if (sub >= 0) {                         //这里必须>=，最后一个检测点考察这里0的情况
         printf("%d.%d.%d\n", g, s, k);
     } else {
