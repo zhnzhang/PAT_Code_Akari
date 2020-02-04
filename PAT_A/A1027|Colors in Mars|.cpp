@@ -1,3 +1,29 @@
+#include <cstdio>
+//做一个基数映射数组来实现题意
+
+char radix [15] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C'};
+
+void ChangeScale(int a[], int n) {          //十进制转十三进制，字母的实现借由基数映射数组来进行
+    int i = 0;
+    do {
+        a[i++] = n % 13;
+        n /= 13;
+    } while (n != 0);
+}
+
+int main() {
+    int r, g, b;
+    int red[5] = {0}, green[5] = {0}, blue[5] = {0};
+    scanf("%d %d %d", &r, &g, &b);
+    ChangeScale(red, r);
+    ChangeScale(green, g);
+    ChangeScale(blue, b);
+    printf("#%c%c%c%c%c%c\n", radix[red[1]], radix[red[0]],
+           radix[green[1]], radix[green[0]], radix[blue[1]], radix[blue[0]]);
+    return 0;
+}
+
+
 //example
 //由于题目的数据范围为[0, 168]，因此给定的整数x在十三进制下一定可以表示为x = a * 13^1 + b * 13^0(因为168 < 13^2)，于是只要想办法求出a跟b即可
 //本题也可以采用正常的进制转换写法，然后输出转换的结果（同时要根据位数来确认是否需要输出多余的0）
