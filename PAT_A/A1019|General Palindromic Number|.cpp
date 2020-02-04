@@ -13,7 +13,7 @@ int main() {
     int num[50];
     int n, b, count = 0;
     scanf("%d %d", &n, &b);
-    do {                                    //除数取余法转进制，用do while
+    do {                                    //除数取余法转进制，用do while可以处理到边界数据0
         num[count] = n % b;
         n /= b;
         count++;
