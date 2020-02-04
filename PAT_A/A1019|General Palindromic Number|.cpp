@@ -1,3 +1,40 @@
+#include <cstdio>
+
+bool JudgePalindrome(int num[], int count) {        //判回文数
+    for (int i = 0; i < count / 2; i++) {
+        if (num[i] != num[count - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int num[50];
+    int n, b, count = 0;
+    scanf("%d %d", &n, &b);
+    do {                                    //除数取余法转进制，用do while
+        num[count] = n % b;
+        n /= b;
+        count++;
+    } while (n != 0);
+    if (JudgePalindrome(num, count)) {
+        printf("Yes\n");
+    } else {
+        printf("No\n");
+    }
+    for (int i = count - 1; i >= 0; i--) {  //从高位到低位输出
+        printf("%d", num[i]);
+        if (i != 0) {
+            printf(" ");
+        }
+    }
+    return 0;
+}
+
+
+
+
 //本题就是进制转换和回文数判断的结合
 //前者用除基取余法(do...while)，后者利用数组指针完成
 #include <cstdio>
