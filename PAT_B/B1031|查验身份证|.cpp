@@ -1,3 +1,34 @@
+#include <cstdio>
+
+int weight[20] = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
+char ZToM[15] = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
+
+int main() {
+    char str[20];
+    int n, z, sum = 0, num[20] = {0};
+    bool flag = true;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        sum = 0;                                //这里每回合sum都要清零，不然就炸裂
+        scanf("%s", str);
+        for (int j = 0; j < 18; j++) {
+            num[j] = str[j] - '0';
+            sum += num[j] * weight[j];
+        }
+        z = sum % 11;
+        if (ZToM[z] != str[17]) {
+            printf("%s\n", str);
+            flag = false;
+        }
+    }
+    if (flag) {
+        printf("All passed\n");
+    }
+    return 0;
+}
+
+
+
 //example
 //常用技法，使用数组来存储权重和校验码的对应关系，也即用下标和数组值的对应关系来联系两个概念
 //只检查前17位是否全为数字且最后1位校验码计算准确，这两种情况若有出错，都需要输出错误的身份证号
