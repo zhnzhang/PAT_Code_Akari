@@ -1,3 +1,50 @@
+#include <cstdio>
+
+char Day[10][5] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
+
+int main() {
+    int i = 0;              //当下标指针用
+    char str[5][80];
+    for (int j = 0; j < 4; j++) {
+        scanf("%s", str[j]);
+    }
+    while (str[0][i] != '\0') {
+        if (str[0][i] == str[1][i] &&
+            str[0][i] - 'A' < 7 && str[0][i] - 'A' >= 0) {      //范围要写全，特别是>=0也要有 不然裂开
+            printf("%s ", Day[str[0][i] - 'A']);
+            break;
+        }
+        i++;
+    }
+    i++;                            //根据逻辑，继续前移下标
+    while (str[0][i] != '\0') {
+        if (str[0][i] == str[1][i] &&
+            ((str[0][i] - '0' >= 0 && str[0][i] - '0' < 10) ||  //范围要写全，特别是>=0也要有 不然裂开
+            (str[0][i] - 'A' >= 0 && str[0][i] - 'A' < 14))) {
+            if (str[0][i] - '0' < 10) {
+                printf("%02d:", str[0][i] - '0');
+            } else {
+                printf("%02d:", str[0][i] - 'A' + 10);
+            }
+            break;
+        }
+        i++;
+    }
+    i = 0;  //重置下标指针
+    while (str[2][i] != '\0') {
+        if (str[2][i] == str[3][i] &&
+            ((str[2][i] - 'A' >= 0 && str[2][i] - 'A' < 26) ||  //范围要写全，特别是>=0也要有 不然裂开
+            (str[2][i] - 'A' >= 0 && str[2][i] - 'a' < 26))) {
+            printf("%02d", i);
+            break;
+        }
+        i++;
+    }
+    return 0;
+}
+
+
+
 //example
 //Same as A1061
 //我在参考代码的基础上有改动，改用数组进行存储及运算
