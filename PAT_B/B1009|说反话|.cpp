@@ -1,3 +1,23 @@
+#include <cstdio>
+
+char str[100][100];
+
+int main() {
+    int i = 0;
+    while (scanf("%s", str[i]) != EOF) {
+        i++;
+    }
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%s", str[j]);
+        if (j != 0) {
+            printf(" ");
+        }
+    }
+    return 0;
+}
+
+
+
 //example1
 //使用gets函数读入一整行，从左至右枚举每一个字符，以空格为分隔符对单词进行划分并
 //按顺序存放到二维字符数组中，最后按单词输入顺序的逆序来输出所有单词
