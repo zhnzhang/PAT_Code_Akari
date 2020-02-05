@@ -1,3 +1,30 @@
+#include <cstdio>
+#include <cstring>
+
+char oldnum[110];       //接收输入
+int newnum[20];         //用来存放 和 的各位的数
+char mirror[15][5] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};     //数字到字符的映射数组
+
+int main() {
+    int len, sum = 0, count = 0;            //count就是和 的位数
+    scanf("%s", oldnum);
+    len = strlen(oldnum);
+    for (int i = 0; i < len; i++) {
+        sum += oldnum[i] - '0';            //这种字符转数字的作差法 很重要
+    }
+    do {
+        newnum[count++] = sum % 10;
+        sum /= 10;
+    } while (sum != 0);
+    for (int i = count - 1; i >= 0; i--) {
+        printf("%s", mirror[newnum[i]]);
+        if (i != 0) {
+            printf(" ");
+        }
+    }
+    return 0;
+}
+
 //example
 //字符串存放在一维字符数组中
 #include <cstdio>
