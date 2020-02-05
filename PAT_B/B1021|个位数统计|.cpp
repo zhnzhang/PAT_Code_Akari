@@ -1,3 +1,27 @@
+#include <cstdio>
+#include <cstring>
+
+int main() {
+    int len, a[15] = {0};
+    char n[1010];
+    scanf("%s", n);
+    len = strlen(n);
+    for (int i = 0; i < len; i++) {
+        a[n[i] - 48]++;                     //通过ASCII码，字符转数字。用字符作差法更好看
+    }
+    for (int i = 0; i < 10; i++) {
+        if (a[i] == 0) {
+            continue;
+        } else {
+            printf("%d:%d\n", i, a[i]);
+        }
+    }
+    return 0;
+}
+
+
+
+
 //利用到数组下标，为下标也赋予意义
 //1000位的数，明显是要放到字符数组里了，这就涉及到如何将字符型的数字转换为整数型的数字了
 //利用ASCII码之间的距离差的思想，可以进行大小写字符转换或者数字类型转换
