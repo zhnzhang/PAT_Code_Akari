@@ -1,3 +1,69 @@
+//这道题就是列举可能的情况别遗漏就是了
+
+#include <cstdio>
+#include <cstring>
+
+char str[11000];
+
+int main() {
+    int len = 0, pos = 0, exp = 0;          //len是接收的字符串长度，pos是字符数组下标指针，exp是放指数的
+    scanf("%s", str);
+    len = strlen(str);
+    if (str[0] == '-') {
+        printf("-");
+    }
+    for (pos = 0; pos < len; pos++) {
+        if (str[pos] == 'E') {
+            break;                          //此时pos的位置指向E，这可是个转折点
+        }
+    }
+    for (int i = pos + 2; i < len; i++) {
+        exp = exp * 10 + (str[i] - '0');
+    }
+    if (exp == 0) {                         //特判指数为0的情况
+        for (int i = 1; i < pos; i++) {
+            printf("%c", str[i]);
+        }
+    }
+    if (str[pos + 1] == '-') {
+        printf("0.");
+        for (int i = 0; i < exp - 1; i++) {
+            printf("0");
+        }
+        printf("%d", str[1] - '0');
+        for (int i = 3; i < pos; i++) {
+            printf("%d", str[i] - '0');
+        }
+    } else {                                //分三种情况
+        if (exp < pos - 3) {
+            printf("%d", str[1] - '0');
+            for (int i = 3; i < exp + 3; i++) {
+                printf("%d", str[i] - '0');
+            }
+            printf(".");
+            for (int i = exp + 3; i < pos; i++) {
+                printf("%d", str[i] - '0');
+            }
+        } else if (exp == pos - 3) {
+            printf("%d", str[1] - '0');
+            for (int i = 3; i < pos; i++) {
+                printf("%d", str[i] - '0');
+            }
+        } else {
+            printf("%d", str[1] - '0');
+            for (int i = 3; i < pos; i++) {
+                printf("%d", str[i] - '0');
+            }
+            for (int i = 0; i < exp - (pos - 3); i++) {
+                printf("0");
+            }
+        }
+    }
+    return 0;
+}
+
+
+
 //example
 //同A1073
 //本题主要是以E的位置为主要研究对象，分明白情况，讨论时计算好小数点移动后的位置
