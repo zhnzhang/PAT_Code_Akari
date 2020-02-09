@@ -1,3 +1,63 @@
+#include <cstdio>
+#include <cstring>
+
+typedef struct account {
+    char name[15];
+    char password[15];
+} account;
+
+account user[1010];
+
+int main() {
+    int n, count = 0;               //count用来计数需要纠正的密码数
+    bool flag[1010] = {false};      //flag数组用来跟踪需要纠正的密码是哪个用户的
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%s %s", user[i].name, user[i].password);
+        int len = strlen(user[i].password);
+        for (int j = 0; j < len; j++) {
+            if (user[i].password[j] == '1' || user[i].password[j] == '0' || user[i].password[j] == 'l' ||
+                                                                            user[i].password[j] == 'O') {
+                flag[i] = true;
+                count++;
+                break;
+            }
+        }
+    }
+    if (count != 0) {               //如果有需要纠正的密码
+        printf("%d\n", count);
+        for (int i = 0; i < 1001; i++) {        //遍历flag数组
+            if (flag[i]) {
+                printf("%s ", user[i].name);
+                int len = strlen(user[i].password);
+                for (int j = 0; j < len; j++) {
+                    if (user[i].password[j] == '1') {
+                        printf("@");
+                    } else if (user[i].password[j] == '0') {
+                        printf("%%");
+                    } else if (user[i].password[j] == 'l') {
+                        printf("L");
+                    } else if (user[i].password[j] == 'O') {
+                        printf("o");
+                    } else {
+                        printf("%c", user[i].password[j]);
+                    }
+                }
+                printf("\n");
+            }
+        }
+    } else {            //没有需要纠正的密码
+        if (n == 1) {
+            printf("There is %d account and no account is modified", n);
+        } else {
+            printf("There are %d accounts and no account is modified", n);
+        }
+    }
+    return 0;
+}
+
+
+
 //example
 #include <cstdio>
 #include <cstring>
