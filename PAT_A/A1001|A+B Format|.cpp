@@ -30,7 +30,7 @@ int main() {
         if (len % 3 == 0) {                 //举个实例，再推广成规律
             for (int j = 0; j < len; j++) {
                 printf("%c", ans[j]);
-                if (j % 3 == 2 && j != len - 1) {
+                if (j % 3 == 2 && j != len - 1) {       //注意最后面不要加逗号
                     printf(",");
                 }
             }
