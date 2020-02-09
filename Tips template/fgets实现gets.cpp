@@ -1,9 +1,9 @@
 //就我个人的实际提交体验来看
-// CSDN有人提出:要想把fgets()接收的字符串变得和gets()一样还需要str[len - 2] = '\0';因为fgets()会把空格也接收到
+//CSDN有人提出:要想把fgets()接收的字符串变得和gets()一样还需要str[len - 2] = '\0';因为fgets()会把空格也接收到
 //但经过我的实际提交，这样的做法会导致答案错误
 //故我还是保持原来的做法
 //只取其中的语句即可
-语句void fgetstogets(char * str) {
+void fgetstogets(char * str) {
  int len = strlen(str);
 	if(str[len - 1] == '\n' && str[len] == '\0') {
 		str[len - 1] = '\0';
