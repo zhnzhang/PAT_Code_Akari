@@ -4,11 +4,11 @@
 //故我还是保持原来的做法
 //只取其中的语句即可
 void fgetstogets(char * str) {
- int len = strlen(str);
-	if(str[len - 1] == '\n' && str[len] == '\0') {
+ int len = strlen(str);			//这个len的长度是包括换行符的，真正的字符串长度还要小1
+	if(str[len - 1] == '\n' && str[len] == '\0') {		//把最后接受到的换行符替换为'\0'空白符
 		str[len - 1] = '\0';
 	}
- return;
+ return;	//一般用getline会比较合适，因为fgets会收入换行符，即便是改为空白符后，len也要重新获取，或者len--才能得到真正的len长度
 }
 
 //if的判断条件中,str[len - 1] == '\n'是最重要的
