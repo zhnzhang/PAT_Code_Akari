@@ -1,3 +1,57 @@
+//按列检查
+#include <cstdio>
+#include <iostream>
+#include <string>           //cin.getline用不上，给getline用的
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+char str[110][260];
+
+int main() {
+    int n, minlen = 260, suffixlen = 0;                //minlen记录最短字符串的长度，后面遍历会用到
+    bool flag = true;                                  //若发现公共后缀对不上了，就置flag为false
+    scanf("%d", &n);
+    getchar();                                         //后面不用scanf了，所以这里一定需要接收一下多余的换行符
+    for (int i = 0; i < n; i++) {       //接收字符串的同时进行一些预处理
+        cin.getline(str[i], 260);   //第三个参数是用于设定读到哪停，不填就默认换行符
+        int len = strlen(str[i]);
+        /*                              //fgets会连换行符一起收，所以不但要吧换行符换成空白符还要重新获取len值
+        fgets(str[i], 260, stdin);      //不如就用getline了
+        int len = strlen(str[i]);
+        if (str[i][len - 1] = '\n') {
+            str[i][len - 1] = '\0';
+        }
+        len--;
+         */
+        if (len < minlen) {
+            minlen = len;
+        }
+        reverse(str[i], &str[i][len]);  //因为要求公共后缀，所以这里要反转对齐
+    }
+    for (int j = 0; j < minlen; j++) {          //i为行数，j为列数，这里是一列列按顺序检查
+        for (int i = 0; i < n; i++) {
+            if (str[i][j] != str[0][j]) {
+                flag = false;
+                break;
+            }
+        }
+        if (!flag) {
+            break;
+        }
+        suffixlen++;                //公共后缀长度
+    }
+    if (suffixlen == 0) {
+        printf("nai\n");
+    } else {
+        for (int k = suffixlen - 1; k >= 0; k--) {      //因为反转了，所以要从高到低遍历输出
+            printf("%c",str[0][k]);
+        }
+    }
+    return 0;
+}
+
+
 //example
 //scanf后欲接gets，中间必加getchar
 //由于字符串中可能有空格，因此不要用scanf来读入字符串，因为scanf的%s格式是以空白符（包括空格）来进行截断的，这会造成字符串读入不完整
@@ -13,7 +67,7 @@ int main() {
     //gets(s[i]);       //这里得用gets，具体见上方注释,但PAT里C++编译器没法用gets
     fgets(s[i], 260, stdin);              //PTA网站如果使用C++(g++)编译不能使用gets(),如果使用c(gcc)编译不能使用C++头文件
     if(s[i][strlen(s[i]) - 1] == '\n')    //此处需用fgets()替代gets()，并且把换行符去了，因为fgets()把换行符也接收了
-      s[i][strlen(s[i]) - 1] = '\0';      //还能使用getline(cin,v[i]),#include <iostream> #include <string>
+      s[i][strlen(s[i]) - 1] = '\0';      //还能用cin.getline，有关getline的相关说明见我的tips文件夹
     int len = strlen(s[i]);
     if(len < minlen)
       minlen = len;       //取最小长度
