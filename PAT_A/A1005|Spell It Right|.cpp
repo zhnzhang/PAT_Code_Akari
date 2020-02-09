@@ -12,7 +12,7 @@ int main() {
     for (int j = 0; j < len; j++) {
         sum += n[j] - '0';
     }
-    do {
+    do {                                    //这里可用递归替代，又快又简便
         ans[i++] = sum % 10;
         sum /= 10;
     } while (sum != 0);
