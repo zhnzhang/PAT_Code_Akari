@@ -21,7 +21,7 @@ int main() {
         sum /= 10;
     } while (sum != 0);
     len = strlen(ans);
-    reverse(ans, ans + len);
+    reverse(ans, ans + len);                //其实不用反转，直接高位向低位输出并判断i % 3 == 0是最顺的思维
     if (len <= 3) {                         //不用逗号
         for (int j = 0; j < len; j++) {
             printf("%c", ans[j]);
