@@ -1,4 +1,5 @@
 //按列检查
+//‘0’是空字符，空白符包括换行，空格等
 #include <cstdio>
 #include <iostream>
 #include <string>           //cin.getline用不上，给getline用的
@@ -16,7 +17,7 @@ int main() {
     for (int i = 0; i < n; i++) {       //接收字符串的同时进行一些预处理
         cin.getline(str[i], 260);   //第三个参数是用于设定读到哪停，不填就默认换行符
         int len = strlen(str[i]);
-        /*                              //fgets会连换行符一起收，所以不但要吧换行符换成空白符还要重新获取len值
+        /*                              //fgets会连换行符一起收，所以不但要吧换行符换成空字符还要重新获取len值
         fgets(str[i], 260, stdin);      //不如就用getline了
         int len = strlen(str[i]);
         if (str[i][len - 1] = '\n') {
