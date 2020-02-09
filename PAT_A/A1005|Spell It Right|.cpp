@@ -1,3 +1,32 @@
+#include <cstdio>
+#include <cstring>
+
+char n[120];
+int ans[50];
+char mirror[15][10] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+
+int main() {
+    int i = 0, len = 0, sum = 0;
+    scanf("%s", n);
+    len = strlen(n);
+    for (int j = 0; j < len; j++) {
+        sum += n[j] - '0';
+    }
+    do {
+        ans[i++] = sum % 10;
+        sum /= 10;
+    } while (sum != 0);
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%s", mirror[ans[j]]);
+        if (j != 0) {
+            printf(" ");
+        }
+    }
+    return 0;
+}
+
+
+
 //example
 //多种写法如下
 /*
