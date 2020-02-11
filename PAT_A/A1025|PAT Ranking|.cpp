@@ -1,3 +1,64 @@
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+typedef struct student {
+    char regnum[15];
+    int finrank;
+    int locnum;
+    int locrank;
+    int score;
+}student;
+
+student stu[50000];
+
+bool cmp(student a, student b) {
+    if (a.score != b.score)
+        return a.score > b.score;
+    else
+        return strcmp(a.regnum, b.regnum) < 0;      //按字典序从小到大
+}
+
+int main() {
+    int n, count = 0;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {              //分批进行
+        int m;
+        scanf("%d", &m);
+        for (int j = count; j < count + m; j++) {               //每个考场内先做好处理
+            scanf("%s %d", stu[j].regnum, &stu[j].score);
+            stu[j].locnum = i;
+        }
+        sort(stu + count, stu + count + m, cmp);
+        stu[count].locrank = 1;
+        for (int j = count + 1; j < count + m; j++) {
+            if (stu[j].score == stu[j - 1].score) {
+                stu[j].locrank = stu[j - 1].locrank;
+            } else {
+                stu[j].locrank = j - count + 1;
+            }
+        }
+        count += m;
+    }
+    sort(stu, stu + count, cmp);            //总排序
+    stu[0].finrank = 1;
+    for (int i = 1; i < count; i++) {
+        if (stu[i].score == stu[i - 1].score) {
+            stu[i].finrank = stu[i - 1].finrank;
+        } else {
+            stu[i].finrank = i + 1;
+        }
+    }
+    printf("%d\n", count);
+    for (int i = 0; i < count; i++) {
+        printf("%s %d %d %d\n", stu[i].regnum, stu[i].finrank, stu[i].locnum, stu[i].locrank);
+    }
+    return 0;
+}
+
+
+
 //example
 #include <cstdio>
 #include <cstring>
