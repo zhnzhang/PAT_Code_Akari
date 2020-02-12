@@ -1,3 +1,60 @@
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+typedef struct student {
+    char id[10];
+    int de;
+    int cai;
+    int type;           //给考生分类
+}student;
+
+student stu[100010];
+
+bool cmp(student a, student b) {    //通过if else设定多重排序规则
+    if (a.type != b.type) {
+        return a.type < b.type;
+    } else if ((a.de + a.cai) != (b.de + b.cai)) {
+        return (a.de + a.cai) > (b.de + b.cai);
+    } else if (a.de != b.de) {
+        return a.de > b.de;
+    } else {
+        return strcmp(a.id, b.id) < 0;
+    }
+}
+
+int main () {
+    int n, m, l, h;                     //m为及格人数
+    scanf("%d %d %d", &n, &l, &h);
+    m = n;
+    for (int i = 0; i < n; i++) {
+        scanf("%s %d %d", stu[i].id, &stu[i].de, &stu[i].cai);
+        if (stu[i].de >= h && stu[i].cai >= h) {
+            stu[i].type = 1;
+        } else if (stu[i].de >= h && stu[i].cai >= l) {
+            stu[i].type = 2;
+        } else if (stu[i].de >= stu[i].cai && stu[i].cai >= l) {
+            stu[i].type = 3;
+        } else if (stu[i].de < l || stu[i].cai< l) {
+            stu[i].type = 5;        //不及格
+            m--;
+        } else {
+            stu[i].type = 4;
+        }
+    }
+    sort(stu, stu + n, cmp);
+    printf("%d\n", m);
+    for (int i = 0; i < n; i++) {
+        if (stu[i].type != 5) {
+            printf("%s %d %d\n", stu[i].id, stu[i].de, stu[i].cai);
+        }
+    }
+    return 0;
+}
+
+
+
 //example
 #include <cstdio>
 #include <cstring>
