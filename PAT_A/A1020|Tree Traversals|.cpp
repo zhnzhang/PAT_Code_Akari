@@ -1,4 +1,84 @@
 #include <cstdio>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+const int MAXN = 35;
+
+typedef struct BitNode {
+    int data;
+    BitNode* lchild;
+    BitNode* rchild;
+    BitNode() {}
+    BitNode(int n) {
+        data = n;
+        lchild = NULL;
+        rchild = NULL;
+    }
+}BitNode, *BiTree;
+
+vector<int> vi;
+
+BiTree BuildTree(int post[], int postl, int postr, int in[], int inl, int inr) {
+    if (postl > postr) {
+        return NULL;
+    }
+    BiTree root = new BitNode(post[postr]);
+    int k;
+    for (int i = inl; i <= inr; i++) {
+        if (in[i] == post[postr]) {
+            k = i;
+            break;
+        }
+    }
+    int numleft = k - inl;
+    root->lchild = BuildTree(post, postl, postl + numleft - 1, in, inl, k - 1);
+    root->rchild = BuildTree(post, postl + numleft, postr - 1, in, k + 1, inr);
+    return root;
+}
+
+void LevelOrder(BiTree root) {
+    queue<BiTree> q;
+    BiTree p;
+    q.push(root);
+    while (!q.empty()) {
+        p = q.front();
+        vi.push_back(p->data);
+        q.pop();
+        if (p->lchild != NULL) {
+            q.push(p->lchild);
+        }
+        if (p->rchild != NULL) {
+            q.push(p->rchild);
+        }
+    }
+}
+
+int main() {
+    int n;
+    int post[MAXN], in[MAXN];
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", post + i);
+    }
+    for (int i = 0; i < n; i++) {
+        scanf("%d", in + i);
+    }
+    BiTree root = BuildTree(post, 0, n - 1, in, 0, n - 1);
+    LevelOrder(root);
+    for (int i = 0; i < vi.size(); i++) {
+        printf("%d", vi[i]);
+        if (i != vi.size() - 1) {
+            printf(" ");
+        }
+    }
+    return 0;
+}
+
+
+
+#include <cstdio>
 #include <cstring>
 #include <queue>
 #include <algorithm>
